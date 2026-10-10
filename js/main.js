@@ -3,7 +3,9 @@
    Handles common helpers, API config, auth state, and dynamic navbar
    =================================================================== */
 
-const API_BASE_URL = "http://localhost:8085/api";
+
+const API_BASE_URL = "https://travelgo-backend-2.onrender.com/api";
+
 
 const DEFAULT_PACKAGE_ITINERARIES = {
   "goa beach escape": {
