@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - TravelGo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        ✈️ Travel<span>Go</span>
+        <span class="admin-brand-tag">ADMIN</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="packages.html">Packages</a>
+        <div id="navAuth" class="nav-auth">
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main id="adminSection" class="admin-page">
+    <div class="admin-layout">
+      <aside class="admin-sidebar" aria-label="Admin dashboard navigation">
+        <div class="admin-sidebar-heading">WORKSPACE</div>
+        <button id="tabBtnOverview" class="tab-btn active" onclick="switchAdminTab('overview')">
+          <span class="sidebar-icon">◫</span> Overview
+        </button>
+        <button id="tabBtnTrips" class="tab-btn" onclick="switchAdminTab('trips')">
+          <span class="sidebar-icon">⌖</span> Trips & In-charge
+        </button>
+        <button id="tabBtnPackages" class="tab-btn" onclick="switchAdminTab('packages')">
+          <span class="sidebar-icon">▣</span> Manage Packages
+        </button>
+        <button id="tabBtnBookings" class="tab-btn" onclick="switchAdminTab('bookings')">
+          <span class="sidebar-icon">▤</span> All Bookings
+        </button>
+        <div class="admin-sidebar-note">
+          <span class="admin-status-dot"></span>
+          <span>TravelGo Admin<br><small>Management portal</small></span>
+        </div>
+      </aside>
+
+      <div class="admin-workspace">
+        <header class="admin-page-header">
+          <div>
+            <div class="admin-eyebrow">TRAVELGO MANAGEMENT</div>
+            <h1>Admin dashboard</h1>
+            <p id="adminGreeting">Manage trips, staff, packages, and bookings from one place.</p>
+          </div>
+          <div class="admin-header-badge"><span class="admin-status-dot"></span> Admin access</div>
+        </header>
+
+        <div id="adminAlertContainer" aria-live="polite"></div>
+
+        <section id="overviewTab" class="tab-content active" aria-labelledby="tabBtnOverview">
+          <div class="admin-section-heading">
+            <div>
+              <h2>Overview</h2>
+              <p>Here’s how your travel operation is doing.</p>
+            </div>
+            <button class="btn btn-outline btn-sm" onclick="loadAdminDashboardData()">↻ Refresh data</button>
+          </div>
+          <div class="admin-stats-grid">
+            <article class="stat-card admin-stat-card">
+              <div class="stat-icon stat-icon-blue">▣</div>
+              <div class="stat-title">Travel packages</div>
+              <div class="stat-value" id="totalPackagesCount">0</div>
+              <div class="stat-caption">Available experiences</div>
+            </article>
+            <article class="stat-card admin-stat-card">
+              <div class="stat-icon stat-icon-purple">▤</div>
+              <div class="stat-title">Total bookings</div>
+              <div class="stat-value" id="totalBookingsCount">0</div>
+              <div class="stat-caption">Across all trips</div>
+            </article>
+            <article class="stat-card admin-stat-card">
+              <div class="stat-icon stat-icon-green">₹</div>
+              <div class="stat-title">Confirmed value</div>
+              <div class="stat-value" id="totalRevenueAmount">₹0</div>
+              <div class="stat-caption">Confirmed bookings</div>
+            </article>
+            <article class="stat-card admin-stat-card">
+              <div class="stat-icon stat-icon-orange">✓</div>
+              <div class="stat-title">Paid amount</div>
+              <div class="stat-value" id="paidRevenueAmount">₹0</div>
+              <div class="stat-caption">Payments received</div>
+            </article>
+            <article class="stat-card admin-stat-card">
+              <div class="stat-icon stat-icon-teal">⌖</div>
+              <div class="stat-title">Trips assigned</div>
+              <div class="stat-value" id="assignedTripsCount">0</div>
+              <div class="stat-caption">With a staff in-charge</div>
+            </article>
+            <article class="stat-card admin-stat-card">
+              <div class="stat-icon stat-icon-rose">!</div>
+              <div class="stat-title">Need an in-charge</div>
+              <div class="stat-value" id="unassignedTripsCount">0</div>
+              <div class="stat-caption">Confirmed trips unassigned</div>
+            </article>
+          </div>
+
+          <section class="admin-panel admin-overview-panel">
+            <div class="admin-panel-heading">
+              <div>
+                <h3>Upcoming trips</h3>
+                <p>Next scheduled bookings and their assigned staff.</p>
+              </div>
+              <button class="text-button" onclick="switchAdminTab('trips')">Manage assignments <span aria-hidden="true">→</span></button>
+            </div>
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Trip</th>
+                    <th>Travel date</th>
+                    <th>Travelers</th>
+                    <th>Staff in-charge</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="adminOverviewTripsBody">
+                  <tr><td colspan="5" class="table-empty">Loading upcoming trips...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <section id="tripsTab" class="tab-content" aria-labelledby="tabBtnTrips">
+          <div class="admin-section-heading">
+            <div>
+              <h2>Trips & staff in-charge</h2>
+              <p>Assign one staff member to each confirmed booking and manage your staff team.</p>
+            </div>
+          </div>
+
+          <div class="admin-panel staff-create-panel">
+            <div class="staff-create-copy">
+              <div class="staff-create-icon">＋</div>
+              <div>
+                <h3>Add a staff member</h3>
+                <p>Create a staff account so they can be assigned to trips.</p>
+              </div>
+            </div>
+            <form id="addStaffForm" class="staff-form">
+              <div class="form-group">
+                <label for="staffName">Full name *</label>
+                <input type="text" id="staffName" autocomplete="name" required>
+              </div>
+              <div class="form-group">
+                <label for="staffEmail">Email *</label>
+                <input type="email" id="staffEmail" autocomplete="email" required>
+              </div>
+              <div class="form-group">
+                <label for="staffPhone">Phone *</label>
+                <input type="tel" id="staffPhone" autocomplete="tel" required>
+              </div>
+              <div class="form-group">
+                <label for="staffPassword">Temporary password *</label>
+                <div class="staff-password-control">
+                  <input type="password" id="staffPassword" autocomplete="new-password" minlength="6" required>
+                  <button class="btn btn-outline btn-sm" type="button" aria-pressed="false" onclick="toggleStaffPassword()">Show</button>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary staff-submit">Add staff</button>
+            </form>
+          </div>
+
+          <section class="admin-panel staff-roster-panel">
+            <div class="admin-panel-heading">
+              <div>
+                <h3>Your staff</h3>
+                <p>Deleted accounts remain visible in booking history but cannot be assigned to new trips.</p>
+              </div>
+              <span class="roster-count" id="staffCountLabel">0 staff</span>
+            </div>
+            <div id="adminStaffRoster" class="staff-roster">
+              <div class="roster-empty">Loading staff...</div>
+            </div>
+          </section>
+
+          <section class="admin-panel trip-assignment-panel">
+            <div class="admin-panel-heading">
+              <div>
+                <h3>Trip assignment board</h3>
+                <p>Choose one in-charge for each booking. Changes save immediately.</p>
+              </div>
+              <span class="assignment-legend"><span class="admin-status-dot"></span> Assignment status</span>
+            </div>
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Trip / destination</th>
+                    <th>Travel date</th>
+                    <th>Booked by</th>
+                    <th>Travelers</th>
+                    <th>Trip status</th>
+                    <th>Staff in-charge</th>
+                  </tr>
+                </thead>
+                <tbody id="adminTripsTableBody">
+                  <tr><td colspan="6" class="table-empty">Loading trips...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <section id="packagesTab" class="tab-content" aria-labelledby="tabBtnPackages">
+          <div class="admin-section-heading">
+            <div>
+              <h2>Manage packages</h2>
+              <p>Create and update the travel experiences customers can book.</p>
+            </div>
+          </div>
+          <section class="admin-panel package-form-panel">
+            <h3 id="packageFormHeading">Add a travel package</h3>
+            <form id="addPackageForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="pkgName">Package name *</label>
+                  <input type="text" id="pkgName" placeholder="e.g. Andaman Island Explorer" required>
+                </div>
+                <div class="form-group">
+                  <label for="pkgDestination">Destination *</label>
+                  <input type="text" id="pkgDestination" placeholder="e.g. Andaman & Nicobar" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="pkgDuration">Duration *</label>
+                  <input type="text" id="pkgDuration" placeholder="e.g. 5 Days / 4 Nights" required>
+                </div>
+                <div class="form-group">
+                  <label for="pkgPrice">Price per person (₹) *</label>
+                  <input type="number" id="pkgPrice" placeholder="e.g. 15999" min="1" step="0.01" required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="pkgDiscountPercent">Offer discount (%)</label>
+                  <input type="number" id="pkgDiscountPercent" value="0" min="0" max="90" step="1">
+                </div>
+                <fieldset class="package-audience-options">
+                  <legend>Trip type</legend>
+                  <label><input type="checkbox" id="pkgFamilyFriendly"> Family-friendly</label>
+                  <label><input type="checkbox" id="pkgGroupTrip"> Group trip</label>
+                </fieldset>
+              </div>
+              <div class="form-group">
+                <label for="pkgPlaces">Places to visit</label>
+                <textarea id="pkgPlaces" rows="4" placeholder="Add one place per line, in visit order&#10;Example: Baga Beach&#10;Fort Aguada&#10;Anjuna Market"></textarea>
+                <small class="form-hint">These stops appear on the package details page. Add one place per line.</small>
+              </div>
+              <div class="form-group">
+                <label for="pkgPlaceImages">Place photo URLs</label>
+                <textarea id="pkgPlaceImages" rows="4" placeholder="Add one https:// image URL per place, in the same order"></textarea>
+                <small class="form-hint">Each photo line matches the place on the same line above.</small>
+              </div>
+              <div class="form-group">
+                <label for="pkgPlaceImageSources">Photo source links</label>
+                <textarea id="pkgPlaceImageSources" rows="3" placeholder="Optional: add one photo credit/source URL per line, in the same order"></textarea>
+                <small class="form-hint">Add credit/source links when using third-party photos.</small>
+              </div>
+              <div class="form-group">
+                <label for="pkgDescription">Short description *</label>
+                <textarea id="pkgDescription" rows="3" placeholder="Brief summary of what this tour package includes..." required></textarea>
+              </div>
+              <button id="packageFormSubmit" type="submit" class="btn btn-primary">＋ Add package</button>
+              <button id="cancelPackageEditButton" type="button" class="btn btn-outline" onclick="cancelPackageEdit()" hidden>Cancel edit</button>
+            </form>
+          </section>
+          <section class="admin-panel">
+            <div class="admin-panel-heading">
+              <div><h3>Existing packages</h3><p>Edit package details or delete them from browsing while preserving booking history.</p></div>
+            </div>
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr><th>ID</th><th>Package name</th><th>Destination</th><th>Duration</th><th>Places to visit</th><th>Trip type / offer</th><th>Price</th><th>Status</th><th>Actions</th></tr>
+                </thead>
+                <tbody id="adminPackagesTableBody">
+                  <tr><td colspan="9" class="table-empty">Loading packages...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+
+        <section id="bookingsTab" class="tab-content" aria-labelledby="tabBtnBookings">
+          <div class="admin-section-heading">
+            <div>
+              <h2>All bookings</h2>
+              <p>Review customer reservations, traveler details, and payment status.</p>
+            </div>
+          </div>
+          <section class="admin-panel">
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Booking</th><th>Customer</th><th>Package</th><th>Travel date</th>
+                    <th>Travelers</th><th>Total</th><th>Status</th><th>Payment</th>
+                  </tr>
+                </thead>
+                <tbody id="adminBookingsTableBody">
+                  <tr><td colspan="8" class="table-empty">Loading bookings...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="admin-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding: 0;">
+        <p>&copy; 2026 TravelGo Booking System. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/booking.js"></script>
+</body>
+</html>

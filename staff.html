@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Trips - TravelGo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">✈️ Travel<span>Go</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="packages.html">Packages</a>
+        <div id="navAuth" class="nav-auth"></div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="staff-page">
+    <div class="container">
+      <header class="staff-page-heading">
+        <div>
+          <span class="staff-eyebrow">STAFF WORKSPACE</span>
+          <h1>Your assigned trips</h1>
+          <p id="staffGreeting">Review package details and traveler information for your trips.</p>
+        </div>
+        <button class="btn btn-outline" type="button" onclick="loadStaffTrips()">Refresh trips</button>
+      </header>
+
+      <div id="staffAlertContainer" aria-live="polite"></div>
+
+      <section class="staff-summary" aria-label="Trip summary">
+        <article class="staff-summary-item">
+          <span>Assigned trips</span>
+          <strong id="staffTripCount">0</strong>
+        </article>
+        <article class="staff-summary-item">
+          <span>Upcoming trips</span>
+          <strong id="staffUpcomingCount">0</strong>
+        </article>
+        <article class="staff-summary-item">
+          <span>Travelers assigned</span>
+          <strong id="staffTravelerCount">0</strong>
+        </article>
+      </section>
+
+      <section class="staff-trips-section">
+        <div class="staff-section-heading">
+          <div>
+            <h2>Trip assignments</h2>
+            <p>Package, schedule, and traveler details for each assignment.</p>
+          </div>
+        </div>
+        <div id="staffTripsContainer" class="staff-trips-grid">
+          <div class="empty-state staff-empty-state">
+            <h3>Loading your trips...</h3>
+            <p>Retrieving assignments from TravelGo.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding: 0;">
+        <p>&copy; 2026 TravelGo Booking System. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/staff.js"></script>
+</body>
+</html>

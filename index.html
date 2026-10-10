@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TravelGo - Explore the World with Curated Travel Packages</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        ✈️ Travel<span>Go</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="packages.html">Packages</a>
+        <div id="navAuth" class="nav-auth">
+          <a href="login.html" class="btn btn-outline btn-sm">Customer Login</a>
+          <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container hero-content">
+      <span class="hero-kicker">MADE FOR YOUR NEXT GETAWAY</span>
+      <h1>Your journey<br>begins <em>here.</em></h1>
+      <p>Thoughtfully planned escapes, beautiful places, and all the details taken care of.</p>
+      <div class="hero-cta">
+        <a href="packages.html" class="btn btn-primary">Find your trip <span aria-hidden="true">↗</span></a>
+        <a href="#popular-destinations" class="hero-text-link">Explore destinations <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Popular Destinations Section -->
+    <section class="section home-destinations-section" id="popular-destinations">
+      <div class="container">
+        <div class="section-header">
+          <h2>Popular Destinations</h2>
+          <p>Explore some of the most loved holiday getaways across India</p>
+        </div>
+
+        <div class="destinations-grid home-destinations">
+          <div class="destination-card">
+            <div class="destination-icon">🏖️</div>
+            <h3>Goa</h3>
+            <p>Sun, sand, serene beaches and nightlife</p>
+          </div>
+          <div class="destination-card">
+            <div class="destination-icon">🏔️</div>
+            <h3>Manali</h3>
+            <p>Snow-capped peaks and mountain thrill</p>
+          </div>
+          <div class="destination-card">
+            <div class="destination-icon">🌴</div>
+            <h3>Kerala</h3>
+            <p>Tranquil backwaters and lush greenery</p>
+          </div>
+          <div class="destination-card">
+            <div class="destination-icon">🏰</div>
+            <h3>Jaipur</h3>
+            <p>Royal palaces, forts, and rich heritage</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Packages Section -->
+    <section class="section" style="background-color: #ffffff; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured Travel Packages</h2>
+          <p>Hand-picked trips designed for solo travelers, couples, and families</p>
+        </div>
+
+        <!-- Rendered dynamically from backend API -->
+        <div id="featuredPackagesContainer" class="packages-grid">
+          <div class="empty-state" style="grid-column: 1 / -1;">
+            <h3>Loading packages...</h3>
+            <p>Connecting to backend API...</p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+          <a href="packages.html" class="btn btn-primary" style="padding: 12px 30px;">View All Travel Packages →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose TravelGo Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Why Travel With Us?</h2>
+          <p>Simple booking, transparent pricing, and unforgettable memories</p>
+        </div>
+
+        <div class="destinations-grid">
+          <div class="destination-card">
+            <div class="destination-icon">⚡</div>
+            <h3>Instant Booking</h3>
+            <p>Real-time booking confirmation with full transparency.</p>
+          </div>
+          <div class="destination-card">
+            <div class="destination-icon">💰</div>
+            <h3>Best Price Guarantee</h3>
+            <p>No hidden charges, clear per-person pricing calculation.</p>
+          </div>
+          <div class="destination-card">
+            <div class="destination-icon">🛡️</div>
+            <h3>Verified Itineraries</h3>
+            <p>Quality stays, reliable guides, and tested travel routes.</p>
+          </div>
+          <div class="destination-card">
+            <div class="destination-icon">📞</div>
+            <h3>24/7 Assistance</h3>
+            <p>Dedicated customer support team throughout your journey.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-col">
+          <h4>TravelGo</h4>
+          <p>Your trusted travel companion for college projects and real-world holiday planning. Built with Java Spring Boot, MySQL, and modern web standards.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="packages.html">Travel Packages</a></li>
+            <li><a href="my-bookings.html">My Bookings</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>College Project Info</h4>
+          <p><strong>Stack:</strong> Java 21, Spring Boot, MySQL, HTML5, CSS3, JavaScript</p>
+          <p><strong>Architecture:</strong> Layered Architecture (Controller - Service - Repository - Entity)</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 TravelGo Booking System. College Full-Stack Project.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/packages.js"></script>
+</body>
+</html>

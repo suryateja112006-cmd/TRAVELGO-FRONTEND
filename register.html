@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Registration - TravelGo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        ✈️ Travel<span>Go</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="packages.html">Packages</a>
+        <div id="navAuth" class="nav-auth">
+          <a href="login.html" class="btn btn-outline btn-sm">Customer Login</a>
+          <a href="register.html" class="btn btn-primary btn-sm active">Register</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="form-card">
+      <div class="form-header">
+        <h2>Create an Account</h2>
+        <p>Register to book travel packages and track your trips</p>
+      </div>
+
+      <div id="alertContainer"></div>
+
+      <form id="registerForm">
+        <div class="form-group">
+          <label for="name">Full Name *</label>
+          <input type="text" id="name" name="name" placeholder="e.g. John Doe" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" name="email" placeholder="e.g. john@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number *</label>
+          <input type="tel" id="phone" name="phone" placeholder="e.g. 9876543210" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password *</label>
+          <input type="password" id="password" name="password" placeholder="Create a secure password" required minlength="4">
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password *</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repeat your password" required minlength="4">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="padding: 12px; margin-top: 10px;">
+          Register
+        </button>
+      </form>
+
+      <div class="form-footer">
+        Already have an account? <a href="login.html">Customer login</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding: 0;">
+        <p>&copy; 2026 TravelGo Booking System. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

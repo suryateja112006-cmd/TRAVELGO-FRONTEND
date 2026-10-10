@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bookings - TravelGo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        ✈️ Travel<span>Go</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="packages.html">Packages</a>
+        <div id="navAuth" class="nav-auth">
+          <a href="login.html" class="btn btn-outline btn-sm">Customer Login</a>
+          <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>My Bookings</h2>
+        <p>Review all your confirmed and past travel reservations</p>
+      </div>
+
+      <div id="alertContainer"></div>
+
+      <!-- Bookings Table Container -->
+      <div id="myBookingsContainer">
+        <div class="empty-state">
+          <h3>Loading Bookings...</h3>
+          <p>Connecting to backend API...</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding: 0;">
+        <p>&copy; 2026 TravelGo Booking System. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/booking.js"></script>
+</body>
+</html>

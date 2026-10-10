@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Login - TravelGo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">✈️ Travel<span>Go</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="packages.html">Packages</a>
+        <div id="navAuth" class="nav-auth">
+          <a href="login.html" class="btn btn-outline btn-sm">Customer Login</a>
+          <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="form-card">
+      <div class="form-header">
+        <h2>Staff Login</h2>
+        <p>Sign in to see the trips assigned to you</p>
+      </div>
+
+      <nav class="login-role-switch role-options-three" aria-label="Choose login type">
+        <a href="login.html" class="btn btn-outline">Customer</a>
+        <a href="admin-login.html" class="btn btn-outline">Admin</a>
+        <a href="staff-login.html" class="btn btn-primary" aria-current="page">Staff</a>
+      </nav>
+
+      <div id="alertContainer"></div>
+
+      <form id="loginForm" data-login-role="STAFF">
+        <div class="form-group">
+          <label for="email">Staff Email *</label>
+          <input type="email" id="email" name="email" placeholder="Email provided by your administrator" required autocomplete="username">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password *</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="padding: 12px; margin-top: 10px;">
+          Sign In as Staff
+        </button>
+      </form>
+
+      <div class="form-footer">
+        Staff accounts are created by your administrator.
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding: 0;">
+        <p>&copy; 2026 TravelGo Booking System. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

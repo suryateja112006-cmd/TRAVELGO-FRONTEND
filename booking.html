@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Package - TravelGo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        ✈️ Travel<span>Go</span>
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="packages.html">Packages</a>
+        <div id="navAuth" class="nav-auth">
+          <a href="login.html" class="btn btn-outline btn-sm">Customer Login</a>
+          <a href="register.html" class="btn btn-primary btn-sm">Register</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="form-card wide">
+      <div class="form-header">
+        <h2>Book Your Travel Package</h2>
+        <p>Complete your booking details below. Total price is calculated automatically.</p>
+      </div>
+
+      <div id="alertContainer"></div>
+
+      <form id="bookingForm">
+        <h3 style="font-size: 1.1rem; margin-bottom: 8px; color: var(--dark-color); border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+          1. Traveler Information
+        </h3>
+        <p style="color: var(--text-muted); margin-bottom: 16px;">
+          Enter the name, email, and phone number for each person traveling.
+        </p>
+        <div id="travelerFieldsContainer"></div>
+
+        <h3 style="font-size: 1.1rem; margin-top: 24px; margin-bottom: 16px; color: var(--dark-color); border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+          2. Trip & Package Details
+        </h3>
+
+        <div class="form-group">
+          <label for="packageSelect">Select Travel Package *</label>
+          <select id="packageSelect" name="packageSelect" required>
+            <option value="">Loading packages...</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="travelDate">Travel Date *</label>
+            <input type="date" id="travelDate" name="travelDate" required>
+          </div>
+
+          <div class="form-group">
+            <label for="numberOfPersons">Number of Persons *</label>
+            <input type="number" id="numberOfPersons" name="numberOfPersons" min="1" max="50" value="1" required>
+          </div>
+        </div>
+
+        <!-- Dynamic Booking Calculation Display -->
+        <div class="calc-summary">
+          <div class="calc-row">
+            <span>Package Price (Per Person):</span>
+            <span id="summaryPackagePrice">₹0</span>
+          </div>
+          <div class="calc-row">
+            <span>Number of Persons:</span>
+            <span id="summaryPersons">1</span>
+          </div>
+          <div class="calc-total">
+            <span>Total Amount:</span>
+            <span id="summaryTotal">₹0</span>
+          </div>
+          <small style="color: var(--text-muted); display: block; margin-top: 6px;">
+            Formula: Total Amount = Package Price × Number of Persons
+          </small>
+        </div>
+
+        <button type="submit" id="confirmBookingBtn" class="btn btn-secondary btn-block" style="padding: 14px; font-size: 1.1rem; margin-top: 10px;">
+          Confirm Booking
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding: 0;">
+        <p>&copy; 2026 TravelGo Booking System. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/booking.js"></script>
+</body>
+</html>
